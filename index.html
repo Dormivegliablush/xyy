@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>明天我就吃羊肉火锅</title>
+</head>
+<style>
+    #top {
+        display: flex;
+        background-color: black;
+        width: 100%;
+    }
+    #container {
+        width: 90%;
+        height: 70px;
+        margin-left: 5%;
+        display: inline-flex;
+        background-color: black;
+    }
+    #l {
+        display: inline-flex;
+        width: 400px;
+        height: 70px;
+    }
+    #l a {
+        text-decoration: none;
+        color: white;
+        flex-wrap: nowrap;
+        flex-grow: 1;
+        text-align: center;
+        line-height: 70px;
+        font-size: 15px;
+    }
+    #r {
+        display: inline-flex;
+        width: 600px;
+        height: 70px;
+    }
+    #r a {
+        text-decoration: none;
+        font-size: 10px;
+        color: white;
+        flex-wrap: nowrap;
+        flex-grow: 1;
+        text-align: center;
+        line-height: 70px;
+        /* width: 40%; */
+        height: 70px;
+    }
+    #r>div>div {
+        display: inline-block;
+    }
+    #r {
+        display: inline-flex;
+    }
+    .star {
+        background: url(images/items1.png);
+        background-position: -220px -14px;
+        width: 30px;
+        height: 30px;
+    }
+    #top a:hover {
+        text-decoration: none;
+        color: rgb(230, 169, 77);
+    }
+    #search {
+        width: 300px;
+        height: 40px;
+        display: inline-block;
+        padding-top: 15px;
+    }
+    .left {
+        float: left;
+        width: 50%;
+        height: 500px;
+        /* flex-grow: 1; */
+        /* display: inline-block; */
+    }
+    .left #overflow {
+        text-align: center;
+        overflow-y: scroll;
+        height: 300px;
+    }   
+    h2 {
+        text-align: center;
+    }
+    .left p span {
+        color: rgb(197, 147, 82);
+    }
+    #line {
+        border-bottom: solid #a6abb1 1.5px;
+    }
+    /* || 69px 0.01px; */
+    /* △ 2098px 0.01 */
+    .musicControll .play {
+        width: 40px;
+        height: 40px;
+        background: url(images/items2.jpg);
+    }
+    #wp_mute {
+        width: 28px;
+        height: 20px;
+        background: url(images/items2.jpg);
+        background-position: -40px 0.01px;
+    }
+    #wp_mute:hover{
+        width: 28px;
+        height: 20px;
+        background: url(images/items2.jpg);
+        background-position: -65px 0.01px;
+    }
+    .right {
+        float: right;
+        position: relative;
+        /* flex-grow: 1; */
+    }
+    
+    #width{
+        height: 250px;
+    }
+    @keyframes rot{
+    from{
+        transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(360deg);
+    }
+    }
+    .player img{
+        position: absolute;
+        margin-left: -360px;
+        margin-top: 80px;
+        border-radius: 50%;
+        width: 250px;
+        height: 250px;
+        display:block;
+        animation: rot 5s linear infinite;
+    }
+    #all{
+        position: absolute;
+        margin-top: 100px;
+        margin-left: -380px;
+        display: inline-block;
+        /* float: left; */
+    }
+    main{
+        margin: auto 0;
+    }
+    .playerLeft{
+        position: absolute;
+        margin-top: -10px;
+        margin-left: -65px;       
+    }
+    .playerRight #wp_playTime{
+        display: inline-block; 
+        position: absolute;
+        margin-top: -10px;
+        margin-left: 305px;  
+    }
+    .playerRight .p,#wp_mute{
+        display: inline-block; 
+        position: absolute;
+        margin-top: -10px;
+        margin-left: 350px;  
+    }
+    #wp_bufBar{
+        width: 300px;
+        height: 3px;
+        border-bottom:solid lightgray 5px;
+    }
+    .prograssBar{
+        height: 3px;
+        border-bottom:solid rgb(214, 172, 94) 5px;
+    }
+    #wp_processBtn{
+        width: 10px;
+        height: 10px;
+        /* background: url(images/current.jpg); */
+        display: inline-block;
+        z-index: 999;
+        position: absolute;
+        margin-top: -8px;
+    }
+
+
+    .comment1{
+        width:1200px;
+        height:400px;
+        position:relative;
+        margin:0 auto;
+        top:450px;
+    }
+    .com_title1{
+        width:1200px;
+        position: absolute;
+        top: 10px;
+        height:60px;  
+        border-bottom:1px solid rgb(165, 163, 163);
+    }
+    .ccc{
+        font-size:20px;
+    }
+    .com_comment{
+        width:1000px;
+        height:160px;
+        border:1px solid rgb(165, 163, 163);
+        position:absolute;
+        left:100px;
+        top:90px;
+    }
+    .com_img{
+        width:70px;
+        height:70px;
+        background:url(images/kuwobox.jpg) no-repeat;
+        background-size:contain;
+        position:absolute;
+        top:80px;
+    }
+   
+    #com_input{
+        width: 990px;
+        height:60px;
+        border-style:none;
+        position:absolute;
+        left:105px;
+        top:95px;
+        font-size:15px;
+        color:rgb(165, 163, 163);
+    }
+    #com_input:focus{
+        outline:none;
+    }
+    .com_smile{
+        width:30px;
+        height:30px;
+        background:url(images/img11.png) no-repeat;
+        background-size:contain;
+        position:absolute;
+        left:100px;
+        top:270px;
+    }
+    #com_text1{
+        width:80px;
+        height:30px;
+        position:absolute;
+        color:rgb(165, 163, 163);
+        left:930px;
+        top:270px;
+    }
+    #com_button{
+        width:90px;
+        height:30px;
+        background:orange;
+        color:white;
+        line-height:30px;
+        text-align:center;
+        position:absolute;
+        left:1010px;
+        top:260px;
+        border-radius: 5%;
+    }
+
+    .white{
+       width:30px;
+       height:30px;
+       border-radius:50%;
+       background:white;
+       justify-content:space-around;
+       flex-grow:0;
+       flex-shrink:0;
+       margin-left:20px;
+   }   
+    .remark{
+        display: block;       
+        margin-top: 480px; 
+        margin-left: 250px;
+        width: 140px;
+        font-size: 14px;
+    }
+    .span{
+        font-size: 6px;
+    }
+    #comment2{
+        width:1300px;
+        height:400px;
+        margin:0 auto;
+        top:400px;
+        overflow:auto;
+        position:relative;        
+    }
+    .com_title2{
+        width:1200px;
+        border-bottom:1px solid rgb(194, 190, 190);
+        font-size:20px;
+        height:60px;          
+    }
+    .one_img{
+        width:70px;
+        background:url(images/kuwobox.jpg) no-repeat;
+        background-size:contain;
+        position:absolute;
+        top:80px;
+        height:70px;       
+    }
+    #newcomment{
+        width:1200px;
+        height:400px;  
+    }
+    .newdiv{
+        width:1200px;
+        border-bottom:1px dashed rgb(184, 179, 179);
+        position:relative;
+        top:0;
+        height:100px;        
+    }
+    .newtext1{
+        width:70px;
+        height:18px;
+        color:rgb(230, 183, 97);
+        font-size:20px;
+        position:absolute;
+        left:90px;
+    }
+    .newimg{
+        width:70px;
+        height:70px;
+        background:url(images/kuwobox.jpg) no-repeat;
+        background-size:contain;
+        position:absolute;
+        top:10px;
+    }
+    .newtext3{
+        width:40px;
+        height:20px;
+        position:absolute;
+        right:0px;
+        top:30px;
+    }
+    .newtext2{
+        width:1000px;
+        height:50px;
+        position:absolute;
+        left:90px;
+        top:30px;
+    }  
+    .newtext4{
+        width:300px;        
+        top:80px;
+        height:20px;
+        position:absolute;
+        left:90px;
+    }
+    .newtext6{
+        width:40px;
+        position:absolute;
+        right:0px;
+        top:80px;
+        height:20px;
+    }
+    .newgood{
+        width:20px;       
+        background-size:contain;
+        height:20px;
+        position:absolute;
+        background:url(images/bg2.jpg) no-repeat;
+        right:70px;
+        top:80px;
+    }
+    .newtext5{
+        width:80px;
+        position:absolute;
+        right:80px;
+        top:80px;
+        height:20px;
+    }   
+   #fenye{
+       width:500px;
+       margin:0 auto;
+       display:flex;
+       height:100px;
+       position:relative;
+       top:500px;
+       bottom:0px;
+       overflow:hidden;
+   }
+   .pag a{
+       width:30px;
+       font-size:15px;
+       position:absolute;
+       top:5px;
+       height:30px;
+       text-decoration: none;
+       color:rgb(82, 78, 78);
+       border-radius:50%;
+   }
+   .pag{
+       width:30px;
+       background:rgb(228, 223, 223);
+       justify-content:space-around;
+       flex-grow:0;
+       height:30px;
+       flex-shrink:0;
+       border-radius:50%;
+       margin-left:20px;
+   }
+  
+   .pag:hover{
+       background:rgb(190, 149, 73);
+   }   
+   .pag a:hover{
+        color:white;
+   }
+  
+
+</style>
+
+<body>
+    <div id="top">
+        <div id="container">
+            <img src="images/kuwo.jpg">
+            <div id="l">
+                <a href="">首页</a>
+                <a href="">榜单</a>
+                <a href="">歌手</a>
+                <a href="">下载酷我客服端</a>
+            </div>
+            <div id="r">
+                <div>
+                    <div class="star"></div><a href="">美女秀</a>
+                </div>
+                <div>
+                    <div class="star"></div><a href="">酷我耳机</a>
+                </div>
+                <div>
+                    <div class="star"></div><a href="">VIP会员</a>
+                </div>
+                <div>
+                    <div class="star"></div><a href="">听</a>
+                </div>
+                <a href="">更多服务</a>
+                <a href="">登录</a>
+                <a href="">^</a>
+            </div>
+            <img src="images/search.png" id="search">
+        </div>
+    </div>
+    <div class="middle">
+        <div class="main">
+        <div class="left">
+            <div id="line">
+                <h2>喜羊羊</h2>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;专辑：<span>儿歌大全
+                    </span>歌手：<span>华语群星 </span>分享 <span>评论</span></p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;上传时间：
+                    2015-10-02 歌曲来源：民大相思湖网球社</p>
+            </div>
+            <div id="overflow">
+                <p>喜羊羊 - 别看我只是一只羊</p>
+                <p>词：古倩敏</p>
+                <p>曲：古倩敏</p>
+                <p>喜羊羊美羊羊懒羊羊沸羊羊</p>
+                <p>慢羊羊软绵绵红太狼灰太狼</p>
+                <p>别看我只是一只羊</p>
+                <p><span>绿草因为我变的更香</span></p>
+                <p>天空因为我变的更蓝</p>
+                <p>白云因为我变的柔软</p>
+                <p>别看我只是一只羊</p>
+                <p>羊儿的聪明难以想像</p>
+                <p>天再高心情一样奔放</p>
+                <p>每天都追赶太阳</p>
+                <p>有什么难题去牵绊我都不会去心伤</p>
+                <p>有什么危险在我面前也不会去慌乱</p>
+            </div>
+        </div>
+        <div class="right">
+            <div id="player">
+                <!-- 引入音乐 -->
+                <audio autoplay="autoplay" id="mymusic">
+                    <source src="1.mp3" type="audio/mp3">
+                </audio>
+                <div id="playerBox">
+                    <div class="player">
+                        <div id="width">
+                            <img id="artist_Image" src="images/miemie.jpg">
+                        </div>
+                        <div id="all">
+                        <div class="playerLeft">
+                            <div class="musicControll">
+                                <!-- 播放按钮 -->
+                                <div class="play" id="wp_playBtn"></div>
+                            </div>
+                        </div>
+                        <!-- bar -->
+                        <div id="prograssBar">
+                            <div id="wp_bufBar">
+                                <div class="prograssBar" id="wp_processBar"></div>
+                                <img src="images/current.jpg" id="wp_processBtn">
+                            </div>
+                        </div>
+                        <div class="playerRight">
+                            <!-- 时间 -->
+                            <p id="wp_playTime" class="opacity">00.00</p>
+                            <div id="controllBtn">
+                                <!-- 静音 -->
+                                <div class="sound" id="wp_mute">
+                                    <div id="soundBox">
+                                        <div class="soundPro">
+                                            <div class="soundPro" id="wp_volBar"></div>
+                                            <a href="##" id="wp_volBtn"></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div></div>
+<div></div>
+    <div class="comment1">
+        <div class="com_title1">
+            <span class="ccc">评论&nbsp;&nbsp;</span>
+            <span>1703条评论</span>
+        </div>
+        <div class="com_img"></div>
+        <div></div>
+        <div class="com_comment"></div>
+        <input id="com_input" placeholder="分享你的音乐见解"/>
+        <div class="com_smile"></div>
+        <div></div>
+        <div id="com_text1">已输入 0字</div>
+        <div id="com_button">评论</div>
+    </div>
+    <div></div>
+    <div></div>
+    <div id="comment2">
+        <div class="com_title2">
+            精彩评论
+        </div>
+        <div id="newcomment">
+        </div>
+    </div>
+    <div id="fenye"> 
+        <div class="pag"><a href="#">&nbsp;<</a></div>
+        <div class="pag"><a href="#">&nbsp;&nbsp;1</a></div>
+        <div class="pag"><a href="#">&nbsp;&nbsp;2</a></div>
+        <div class="pag"><a href="#">&nbsp;&nbsp;3</a></div>
+        <div class="pag white"><a href="#">&nbsp;&nbsp;...</a></div>
+        <div class="pag"><a href="#">&nbsp;17</a></div>
+        <div class="pag"><a href="#">&nbsp;&nbsp;></a></div>
+    </div>
+    </div>
+    <div></div>
+</body>
+<script>
+    var loc=new Array();
+    var button=document.getElementById("com_button");
+    var newcomment=document.getElementById("newcomment");
+    var localList=localStorage.getItem('comment');
+    var comment=document.getElementById("com_input");
+    var comtext=document.getElementById("com_text1");
+    var wp_mute = document.getElementById("wp_mute");
+    var wp_processBtn = document.getElementById("wp_processBtn");
+    var wp_processBar = document.getElementById("wp_processBar");
+    var wp_playBtn = document.getElementById("wp_playBtn");
+    var mymusic = document.getElementById("mymusic");
+    var wp_playTime = document.getElementById("wp_playTime");
+    var m = 1;
+     //本地存储
+     function joinComment(){
+        if(localStorage.getItem('comment')){
+        loc=JSON.parse(localStorage.getItem('comment'))
+    }
+    loc.push({
+        "time":gettime(),
+        "comment":comment.value,
+    });
+    localStorage.setItem('comment',JSON.stringify(loc));
+    }
+    //play、stop
+    wp_playBtn.style.backgroundPosition = "2098px 0.01px";
+    wp_playBtn.onclick = function () {
+        if (m == 1) {
+            mymusic.play();
+            wp_playBtn.style.backgroundPosition = "69px 0.01px";
+            m = 0;
+        }
+        else {
+            mymusic.pause();
+            wp_playBtn.style.backgroundPosition = "2098px 0.01px";
+            m = 1;
+        }
+    }   
+    function gettime(){
+     var now=new Date();
+     var year=now.getFullYear();
+     var month=now.getMonth()+1;
+     var day=now.getDate();
+     var hour=now.getHours();
+     var minute =now.getMinutes();
+     var second =now.getSeconds();
+     var time=year+"-"+month+"-"+day+" "+hour+":"+minute+":"+second;
+      return time;
+	}
+    //mute
+    wp_mute.onclick = function () {
+        if (!mymusic.muted) {
+            mymusic.muted = true;
+        }
+        else {
+            mymusic.muted = false;
+        }
+    }
+    // //聚焦事件
+    // comment.onmouseover=function(){
+    //     comtext.innerHTML="已输入"+(comment.value).length+"字";
+    // }
+    //点击事件
+    button.onclick=function(){
+            joinComment();
+            var newdiv=document.createElement("div");
+            newdiv.setAttribute("class","newdiv");
+            var newimg=document.createElement("div");
+            newimg.setAttribute("class","newimg");
+            var newtext1=document.createElement("div");
+            newtext1.setAttribute("class","newtext1");
+            var newtext2=document.createElement("div");
+            newtext2.setAttribute("class","newtext2");
+            var newtext3=document.createElement("div");
+            newtext3.setAttribute("class","newtext3");
+            var newtext4=document.createElement("div");
+            newtext4.setAttribute("class","newtext4");
+            var newtext5=document.createElement("div");
+            newtext5.setAttribute("class","newtext5");
+            var newtext6=document.createElement("div");
+            newtext6.setAttribute("class","newtext6");
+            var newgood=document.createElement("div");
+            newgood.setAttribute("class","newgood");
+            newtext1.innerHTML="郭子仪";
+            newtext6.innerHTML="回复";
+            newtext3.innerHTML="分享";
+            newtext5.innerHTML="删除 163";
+        var arr=[];
+        var loc_arr=localStorage.getItem('comment');
+        arr=JSON.parse(loc_arr);
+        for(var i=0;i<arr.length;i++){
+            newtext2.innerHTML=arr[i].comment;
+            newtext4.innerHTML=arr[i].time;
+        }
+            newcomment.appendChild(newdiv);
+            newdiv.appendChild(newimg);
+            newdiv.appendChild(newtext1);
+            newdiv.appendChild(newtext2);
+            newdiv.appendChild(newtext3);
+            newdiv.appendChild(newtext4);
+            newdiv.appendChild(newtext5);
+            newdiv.appendChild(newtext6);
+            newdiv.appendChild(newgood);
+            comment.value="";
+    }
+    //process
+    var clearIntervalId = setInterval(function () {
+        if (mymusic.currentTime <= mymusic.duration) {
+            var fen = parseInt(mymusic.currentTime / 60);
+            var miao = Math.round(mymusic.currentTime % 60);
+            if (fen < 10 && miao < 10) {
+                wp_playTime.innerHTML = "0" + fen + ":0" + miao;
+            }
+            else if (fen < 10 && miao >= 10) {
+                wp_playTime.innerHTML = "0" + fen + ":" + miao;
+            }
+            else if (fen > 10 && miao < 10) {
+                wp_playTime.innerHTML = fen + ":0" + miao;
+            }
+            else {
+                wp_playTime.innerHTML = fen + ":" + miao;
+            }
+            var processStyle = mymusic.currentTime / mymusic.duration * 300 + "px";
+            wp_processBar.style.width = processStyle;
+            wp_processBtn.style.marginLeft = processStyle;
+            // 小圆球
+        }
+        else {
+            clearInterval(clearIntervalId);
+        }
+    }, 100);
+     //count
+     comment.onmouseover=function(){
+        comtext.innerHTML="已输入"+(comment.value).length+"字";
+    }
+</script>
+
+</html>
